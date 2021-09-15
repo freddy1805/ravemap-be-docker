@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "start downloading backend software..."
 cd /var/www
-git clone https://github.com/freddy1805/ravemap-backend.git > symfony
+git clone https://github.com/freddy1805/ravemap-backend.git symfony/
 
 echo "running post install scripts for php..."
 cd /var/www/symfony
