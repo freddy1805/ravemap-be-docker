@@ -10,7 +10,7 @@ services:
             MYSQL_USER: 'symfony'
             MYSQL_PASSWORD: 'symfony_ravemap'
         ports:
-            - '3306:3306'
+            - '4406:3306'
         volumes:
             - type: volume
               source: database_data
