@@ -1,7 +1,7 @@
 FROM php:7.4-fpm
 
 RUN apt update \
-    && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev zip libmagickwand-dev  \
+    && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev libmagickwand-dev libfreetype6 libfreetype6-dev \
     && docker-php-ext-install intl opcache pdo pdo_mysql \
     && pecl install apcu \
     && pecl install redis \
@@ -14,6 +14,9 @@ RUN apt update \
 
 RUN apt install -y libpng*
 RUN docker-php-ext-install gd
+RUN docker-php-ext-install igbinary
+RUN docker-php-ext-install mbstring
+RUN docker-php-ext-install iconv
 
 WORKDIR /var/www/symfony
 
