@@ -10,6 +10,7 @@ RUN apt update \
 
 RUN apt install -y libpng*
 RUN docker-php-ext-install gd
+RUN docker-php-ext-install redis
 
 WORKDIR /var/www/symfony
 
