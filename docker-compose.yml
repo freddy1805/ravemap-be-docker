@@ -34,9 +34,7 @@ services:
               target: /var/www/symfony
               volume:
                 nocopy: true
-            - type: bind
-              source: ./docker/php/scripts
-              target: /post-install
+            - './docker/php/scripts:/post-install'
     nginx:
         container_name: nginx
         image: nginx:stable-alpine
@@ -49,9 +47,7 @@ services:
         depends_on:
             - php
         volumes:
-            - type: bind
-              source: ./docker/nginx
-              target: /etc/nginx/conf.d
+            - './docker/nginx:/etc/nginx/conf.d'
             - type: volume
               source: web_data
               target: /var/www/symfony
