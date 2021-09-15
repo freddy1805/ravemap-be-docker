@@ -6,7 +6,7 @@ if [ -f "$FILE" ]; then
     echo "$FILE exists. nothing to do!"
 else 
     echo "$FILE does not exist. starting installation!"
-    git clone https://freddy1805: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@github.com/freddy1805/ravemap-backend.git symfony/
+    git clone https://freddy1805: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@github.com/freddy1805/ravemap-backend.git symfony/
 fi
 
 
