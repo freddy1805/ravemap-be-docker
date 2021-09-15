@@ -1,14 +1,14 @@
-version: '3.9'
+version: '3.3'
 
 services:
     database:
         container_name: database
         image: mariadb
         environment:
-            MARIADB_ROOT_PASSWORD: 'secret'
-            MYSQL_DATABASE: 'symfony'
+            MARIADB_ROOT_PASSWORD: 'Krankenhaus9'
+            MYSQL_DATABASE: 'ravemap'
             MYSQL_USER: 'symfony'
-            MYSQL_PASSWORD: 'symfony'
+            MYSQL_PASSWORD: 'symfony_ravemap'
         ports:
             - '3306:3306'
         volumes:
@@ -23,7 +23,7 @@ services:
         environment:
             APP_ENV: 'dev'
             APP_SECRET: '8d0d1677a02b1bd09326fc3403bdfb0f'
-            DATABASE_URL: 'mysql://symfony:symfony@database:3306/symfony?serverVersion=mariadb-10.5.9'
+            DATABASE_URL: 'mysql://symfony:symfony_ravemap@database:3306/symfony?serverVersion=mariadb-10.5.9'
         ports:
             - '9000:9000'
         volumes:
@@ -41,7 +41,7 @@ services:
         environment:
             APP_ENV: 'dev'
             APP_SECRET: '8d0d1677a02b1bd09326fc3403bdfb0f'
-            DATABASE_URL: 'mysql://symfony:symfony@database:3306/symfony?serverVersion=mariadb-10.5.9'
+            DATABASE_URL: 'mysql://symfony:symfony_ravemap@database:3306/symfony?serverVersion=mariadb-10.5.9'
         ports:
             - '8080:80'
         depends_on:
