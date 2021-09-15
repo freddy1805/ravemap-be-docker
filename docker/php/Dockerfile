@@ -1,14 +1,16 @@
 FROM php:7.4-fpm
 
 RUN apt update \
-    && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev zip \
+    && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev zip libmagickwand-dev  \
     && docker-php-ext-install intl opcache pdo pdo_mysql \
     && pecl install apcu \
     && pecl install redis \
+    && pecl install imagick \
     && docker-php-ext-enable apcu \
     && docker-php-ext-enable redis \
     && docker-php-ext-configure zip \
-    && docker-php-ext-install zip
+    && docker-php-ext-install zip \
+    && docker-php-ext-enable imagick
 
 RUN apt install -y libpng*
 RUN docker-php-ext-install gd
