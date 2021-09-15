@@ -1,7 +1,7 @@
 FROM php:7.4-fpm
 
 RUN apt update \
-    && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev libonig-dev libmagickwand-dev libfreetype6 libfreetype6-dev \
+    && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev libonig-dev libbz2-dev libmagickwand-dev libfreetype6 libfreetype6-dev \
     && docker-php-ext-install intl opcache pdo pdo_mysql \
     && pecl install apcu \
     && pecl install redis \
@@ -18,6 +18,8 @@ RUN apt install -y libpng*
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install iconv
+RUN docker-php-ext-install bcmath
+RUN docker-php-ext-install bz2
 
 WORKDIR /var/www/symfony
 
