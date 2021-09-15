@@ -1,7 +1,7 @@
 FROM php:7.4-fpm
 
 RUN apt update \
-    && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev libmagickwand-dev libfreetype6 libfreetype6-dev \
+    && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev libonig4 libonig-dev libmagickwand-dev libfreetype6 libfreetype6-dev \
     && docker-php-ext-install intl opcache pdo pdo_mysql \
     && pecl install apcu \
     && pecl install redis \
