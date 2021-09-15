@@ -1,8 +1,8 @@
 #!/bin/bash
 echo "start downloading backend software..."
 cd /var/www
-FILE=/var/www/symfony
-if [ -d "$FILE" ]; then
+FILE=/var/www/symfony/composer.json
+if [ -f "$FILE" ]; then
     echo "$FILE exists. nothing to do!"
 else 
     echo "$FILE does not exist. starting installation!"
