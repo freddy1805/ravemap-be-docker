@@ -12,9 +12,11 @@ services:
         ports:
             - '3306:3306'
         volumes:
-            - type: bind
-              source: ./docker/database/data
+            - type: volume
+              source: database_data
               target: /var/lib/mysql
+              volume:
+                nocopy: true
     php:
         container_name: php
         build:
@@ -27,9 +29,11 @@ services:
         ports:
             - '9090:9000'
         volumes:
-            - type: bind
-              source: ./ravemap
+            - type: volume
+              source: web_data
               target: /var/www/symfony
+              volume:
+                nocopy: true
             - type: bind
               source: ./docker/php/scripts
               target: /post-install
@@ -48,6 +52,12 @@ services:
             - type: bind
               source: ./docker/nginx
               target: /etc/nginx/conf.d
-            - type: bind
-              source: ./ravemap
+            - type: volume
+              source: web_data
               target: /var/www/symfony
+              volume:
+                nocopy: true
+
+volumes:
+    database_data:
+    web_data:
