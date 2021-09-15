@@ -39,6 +39,8 @@ services:
         arguments:
             - '%env(DATABASE_URL)%'
             - { db_table: 'ravemap__sessions' }
+        calls:
+            - [createTable]
 
     gos_web_socket.authentication.provider.custom.default:
         class: App\Websocket\Provider\AuthProvider
