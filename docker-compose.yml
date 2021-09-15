@@ -11,7 +11,7 @@ services:
             APP_SECRET: '8d0d1677a02b1bd09326fc3403bdfb0f'
             DATABASE_URL: 'mysql://symfony:symfony@database:3306/symfony?serverVersion=mariadb-10.5.9'
         ports:
-            - '9000:9000'
+            - '9090:9000'
         volumes:
             - type: bind
               source: ./ravemap
