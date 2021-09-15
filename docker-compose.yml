@@ -2,7 +2,6 @@ version: '3.3'
 
 services:
     database:
-        container_name: database
         image: mariadb
         environment:
             MARIADB_ROOT_PASSWORD: 'Krankenhaus9'
@@ -18,7 +17,6 @@ services:
               volume:
                 nocopy: true
     php:
-        container_name: php
         build:
             context: ./docker/php
         command: sh /post-install/run.sh
@@ -36,7 +34,6 @@ services:
                 nocopy: true
             - './docker/php/scripts:/post-install'
     nginx:
-        container_name: nginx
         image: nginx:stable-alpine
         environment:
             APP_ENV: 'dev'
