@@ -6,15 +6,16 @@ RUN apt update \
     && pecl install apcu \
     && pecl install redis \
     && pecl install imagick \
+    && pecl install igbinary \
     && docker-php-ext-enable apcu \
     && docker-php-ext-enable redis \
+    && docker-php-ext-enable igbinary \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip \
     && docker-php-ext-enable imagick
 
 RUN apt install -y libpng*
 RUN docker-php-ext-install gd
-RUN docker-php-ext-install igbinary
 RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install iconv
 
