@@ -1,0 +1,56 @@
+version: '3.9'
+
+services:
+    database:
+        container_name: database
+        image: mariadb
+        environment:
+            MARIADB_ROOT_PASSWORD: 'secret'
+            MYSQL_DATABASE: 'symfony'
+            MYSQL_USER: 'symfony'
+            MYSQL_PASSWORD: 'symfony'
+        ports:
+            - '3306:3306'
+        volumes:
+            - type: bind
+              source: ./docker/database/data
+              target: /var/lib/mysql
+    php:
+        container_name: php
+        build:
+            context: ./docker/php
+        command: sh /post-install/run.sh
+        environment:
+            APP_ENV: 'dev'
+            APP_SECRET: '8d0d1677a02b1bd09326fc3403bdfb0f'
+            DATABASE_URL: 'mysql://symfony:symfony@database:3306/symfony?serverVersion=mariadb-10.5.9'
+        ports:
+            - '9000:9000'
+        volumes:
+            - type: bind
+              source: ./ravemap
+              target: /var/www/symfony
+            - type: bind
+              source: ./docker/php/scripts
+              target: /post-install
+        depends_on:
+            - database
+    nginx:
+        container_name: nginx
+        image: nginx:stable-alpine
+        environment:
+            APP_ENV: 'dev'
+            APP_SECRET: '8d0d1677a02b1bd09326fc3403bdfb0f'
+            DATABASE_URL: 'mysql://symfony:symfony@database:3306/symfony?serverVersion=mariadb-10.5.9'
+        ports:
+            - '8080:80'
+        depends_on:
+            - database
+            - php
+        volumes:
+            - type: bind
+              source: ./docker/nginx
+              target: /etc/nginx/conf.d
+            - type: bind
+              source: ./ravemap
+              target: /var/www/symfony

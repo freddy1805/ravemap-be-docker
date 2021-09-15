@@ -1,0 +1,33 @@
+
+.ravemap-header {
+    height: 60px;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+.ravemap-index-spacer {
+    height: calc(100vh - 210px);
+}
+
+.ravemap-footer {
+    min-height: 150px;
+    background: linear-gradient(0deg, #616161 10%, transparent);
+}
+
+.ravemap-footer .small-text {
+    padding-top: 2.5px !important;
+    padding-bottom: 0px !important;
+    font-size: 12px !important;
+    color: #4e4e4e !important;
+}
+
+.ravemap-info {
+    background: linear-gradient(45deg, #2c307bdb, #b70ae2a3);
+}
+
+.bg-black {
+    background-color: #000 !important;
+}
