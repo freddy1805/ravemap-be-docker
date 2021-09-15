@@ -23,7 +23,7 @@ services:
         environment:
             APP_ENV: 'dev'
             APP_SECRET: '8d0d1677a02b1bd09326fc3403bdfb0f'
-            DATABASE_URL: 'mysql://symfony:symfony_ravemap@database:3306/symfony?serverVersion=mariadb-10.6.4'
+            DATABASE_URL: 'mysql://symfony:symfony_ravemap@database:3306/ravemap?serverVersion=mariadb-10.6.4'
         ports:
             - '9090:9000'
         volumes:
@@ -38,7 +38,7 @@ services:
         environment:
             APP_ENV: 'dev'
             APP_SECRET: '8d0d1677a02b1bd09326fc3403bdfb0f'
-            DATABASE_URL: 'mysql://symfony:symfony_ravemap@database:3306/symfony?serverVersion=mariadb-10.6.4'
+            DATABASE_URL: 'mysql://symfony:symfony_ravemap@database:3306/ravemap?serverVersion=mariadb-10.6.4'
         ports:
             - '8080:80'
         depends_on:
