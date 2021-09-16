@@ -1,7 +1,7 @@
 FROM php:7.4-fpm
 
 RUN apt update
-RUN apt install -y zlib1g-dev g++ git screen htop libicu-dev zip libzip-dev libonig-dev libbz2-dev libmagickwand-dev libfreetype6 libfreetype6-dev
+RUN apt install -y zlib1g-dev g++ git screen htop libicu-dev zip libmcrypt-dev libzip-dev libonig-dev libbz2-dev libmagickwand-dev libfreetype6 libfreetype6-dev
 RUN apt install -y libpng*
 
 RUN docker-php-ext-install -j$(nproc) iconv mcrypt pdo_mysql gd zip curl bcmath opcache mbstring bz2
