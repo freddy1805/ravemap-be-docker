@@ -5,7 +5,7 @@ RUN apt install -y zlib1g-dev g++ git screen htop libicu-dev zip libzip-dev libo
 RUN apt install -y libfreetype6-dev libjpeg62-turbo-dev libpng*
 
 RUN docker-php-ext-install -j$(nproc) iconv pdo_mysql gd zip bcmath opcache mbstring bz2
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-configure gd
 RUN docker-php-ext-enable iconv pdo_mysql gd zip bcmath opcache mbstring bz2
 
 RUN pecl install redis
@@ -19,6 +19,10 @@ RUN docker-php-ext-enable igbinary
 RUN pecl install apcu
 RUN docker-php-ext-configure apcu
 RUN docker-php-ext-enable apcu
+
+RUN pecl install imagick
+RUN docker-php-ext-configure imagick
+RUN docker-php-ext-enable imagick
 
 WORKDIR /var/www/symfony
 
