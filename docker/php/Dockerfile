@@ -4,16 +4,9 @@ RUN apt update
 RUN apt install -y zlib1g-dev g++ git screen htop libicu-dev zip libzip-dev libonig-dev libbz2-dev libmagickwand-dev libfreetype6 libfreetype6-dev
 RUN apt install -y libpng*
 
-RUN docker-php-ext-install intl opcache pdo pdo_mysql
-RUN docker-php-ext-install gd
-RUN docker-php-ext-install mbstring
-
-RUN docker-php-ext-install bcmath
-RUN docker-php-ext-install bz2
-
-RUN pecl install zip
-RUN docker-php-ext-configure zip
-RUN docker-php-ext-enable zip
+RUN docker-php-ext-install -j$(nproc) iconv mcrypt pdo_mysql gd zip curl bcmath opcache mbstring bz2
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-enable iconv mcrypt pdo_mysql gd zip curl bcmath opcache mbstring bz2
 
 RUN pecl install redis
 RUN docker-php-ext-configure redis
@@ -30,8 +23,6 @@ RUN docker-php-ext-enable igbinary
 RUN pecl install apcu
 RUN docker-php-ext-configure apcu
 RUN docker-php-ext-enable apcu
-
-RUN docker-php-ext-install iconv
 
 WORKDIR /var/www/symfony
 
