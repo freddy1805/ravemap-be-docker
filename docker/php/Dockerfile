@@ -2,6 +2,9 @@ FROM ubuntu:18.04
 
 ARG PHP_VERSOION=7.4
 
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Berlin
+
 
 RUN apt-get update
 RUN apt install -y zlib1g-dev g++ git screen htop libicu-dev zip libzip-dev libonig-dev libbz2-dev libmagickwand-dev
