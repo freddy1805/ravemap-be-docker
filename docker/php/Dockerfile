@@ -6,7 +6,6 @@ ARG PHP_VERSION=7.4
 RUN apt update
 RUN apt-get install -y gnupg2 && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 14AA40EC0831756756D7F66C4F4EA0AAE5267A6C && \
     echo -n 'deb http://ppa.launchpad.net/ondrej/php/ubuntu bionic main' > /etc/apt/sources.list.d/ondrej-ubuntu-php-bionic.list && apt-get update && \
-    apt-get install -y php${PHP_VERSION}-dev && \
     curl -L https://github.com/Imagick/imagick/archive/${PHP_IM_VERSION}.tar.gz -o imagick-${PHP_IM_VERSION}.tar.gz && \
     tar -zxvf imagick-${PHP_IM_VERSION}.tar.gz && rm imagick-${PHP_IM_VERSION}.tar.gz && \
     cd imagick-${PHP_IM_VERSION} && phpize && ./configure && make && \
