@@ -12,15 +12,12 @@ RUN pecl install redis
 RUN docker-php-ext-enable redis
 
 RUN pecl install igbinary
-RUN docker-php-ext-configure igbinary
 RUN docker-php-ext-enable igbinary
 
 RUN pecl install apcu
-RUN docker-php-ext-configure apcu
 RUN docker-php-ext-enable apcu
 
 RUN pecl install imagick
-RUN docker-php-ext-configure imagick
 RUN docker-php-ext-enable imagick
 
 WORKDIR /var/www/symfony
