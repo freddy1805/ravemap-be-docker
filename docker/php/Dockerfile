@@ -1,4 +1,4 @@
-FROM dpokidov/imagemagick:latest
+FROM php:7.4-fpm
 
 ARG PHP_IM_VERSION=3.4.4
 ARG PHP_VERSION=7.4
