@@ -1,25 +1,37 @@
 FROM php:7.4-fpm
 
-RUN apt update \
-    && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev libonig-dev libbz2-dev libmagickwand-dev libfreetype6 libfreetype6-dev \
-    && docker-php-ext-install intl opcache pdo pdo_mysql \
-    && pecl install apcu \
-    && pecl install redis \
-    && pecl install imagick \
-    && pecl install igbinary \
-    && docker-php-ext-enable apcu \
-    && docker-php-ext-enable redis \
-    && docker-php-ext-enable igbinary \
-    && docker-php-ext-configure zip \
-    && docker-php-ext-install zip \
-    && docker-php-ext-enable imagick
-
+RUN apt update
+RUN apt install -y zlib1g-dev g++ git screen htop libicu-dev zip libzip-dev libonig-dev libbz2-dev libmagickwand-dev libfreetype6 libfreetype6-dev
 RUN apt install -y libpng*
+
+RUN docker-php-ext-install intl opcache pdo pdo_mysql
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install mbstring
-RUN docker-php-ext-install iconv
+
 RUN docker-php-ext-install bcmath
 RUN docker-php-ext-install bz2
+
+RUN pecl install zip
+RUN docker-php-ext-configure zip
+RUN docker-php-ext-enable zip
+
+RUN pecl install redis
+RUN docker-php-ext-configure redis
+RUN docker-php-ext-enable redis
+
+RUN pecl install imagick
+RUN docker-php-ext-configure imagick
+RUN docker-php-ext-enable imagick
+
+RUN pecl install igbinary
+RUN docker-php-ext-configure igbinary
+RUN docker-php-ext-enable igbinary
+
+RUN pecl install apcu
+RUN docker-php-ext-configure apcu
+RUN docker-php-ext-enable apcu
+
+RUN docker-php-ext-install iconv
 
 WORKDIR /var/www/symfony
 
@@ -27,7 +39,5 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN curl -sS https://get.symfony.com/cli/installer | bash
 RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
-RUN git config --global user.email "f-roettgerkamp@live.de" \ 
-    && git config --global user.name "freddy1805"
 
 CMD ["php-fpm"]
