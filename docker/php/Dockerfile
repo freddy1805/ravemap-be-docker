@@ -13,10 +13,7 @@ RUN apt-get install -y gnupg2 && apt-key adv --keyserver hkp://keyserver.ubuntu.
     mkdir /phpmods && cp -r modules /phpmods && \
     cd .. && \
     rm -rf imagick-${PHP_IM_VERSION} && \
-    ldconfig /usr/local/lib && \
-    # Cleanup
-    apt-get remove --autoremove --purge -y gnupg2 php${PHP_VERSION}-dev && \
-    rm -rf /var/lib/apt/lists/*
+    ldconfig /usr/local/lib
 
 
 RUN apt install -y zlib1g-dev g++ git screen htop libicu-dev zip libzip-dev libonig-dev libbz2-dev libmagickwand-dev
@@ -37,6 +34,10 @@ RUN docker-php-ext-enable igbinary
 RUN pecl install apcu
 RUN docker-php-ext-configure apcu
 RUN docker-php-ext-enable apcu
+
+## CLEANUP
+RUN apt-get remove --autoremove --purge -y gnupg2 php${PHP_VERSION}-dev && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www/symfony
 
