@@ -31,3 +31,5 @@ fi
 cd /var/www/symfony
 echo ">> starting websocket service..."
 screen -d -m php bin/console gos:websocket:server
+
+php-fpm7.4
