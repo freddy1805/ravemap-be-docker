@@ -2,7 +2,7 @@ FROM php:7.4-fpm
 
 RUN apt update
 RUN apt install -y zlib1g-dev g++ git screen htop libicu-dev zip libzip-dev libonig-dev libbz2-dev libmagickwand-dev
-RUN apt install -y libfreetype6-dev libjpeg62-turbo-dev libpng* libcurl*
+RUN apt install -y libfreetype6-dev libjpeg62-turbo-dev libpng* libcurl4-gnutls-dev libcurl4-nss-dev libcurl4-openssl-dev libcurlpp-dev
 
 RUN docker-php-ext-install -j$(nproc) iconv pdo_mysql gd zip curl bcmath opcache mbstring bz2
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
