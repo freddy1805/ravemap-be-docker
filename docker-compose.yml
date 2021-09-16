@@ -26,6 +26,7 @@ services:
             DATABASE_URL: 'mysql://symfony:symfony_ravemap@database:3306/ravemap?serverVersion=mariadb-10.6.4'
         ports:
             - '9090:9000'
+            - '1234:1234'
         volumes:
             - type: volume
               source: web_data
