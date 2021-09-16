@@ -8,7 +8,7 @@ ENV TZ=Europe/Berlin
 
 RUN apt-get update
 RUN apt install -y zlib1g-dev g++ git screen htop libicu-dev zip libzip-dev libonig-dev libbz2-dev libmagickwand-dev
-RUN apt install -y libfreetype6-dev libpng* software-properties-common libcurl*
+RUN apt install -y libfreetype6-dev libpng* software-properties-common curl
 RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update
 RUN apt install -y php${PHP_VERSOION} php${PHP_VERSOION}-fpm \
