@@ -9,7 +9,6 @@ RUN docker-php-ext-configure gd
 RUN docker-php-ext-enable iconv pdo_mysql gd zip bcmath opcache mbstring bz2
 
 RUN pecl install redis
-RUN docker-php-ext-configure redis
 RUN docker-php-ext-enable redis
 
 RUN pecl install igbinary
