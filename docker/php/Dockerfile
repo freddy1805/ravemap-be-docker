@@ -30,7 +30,7 @@ RUN apt-get update -yqq \
     supervisor 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common screen htop git
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
 RUN DEBIAN_FRONTEND=noninteractive LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 
 ## Install php7.4
@@ -107,6 +107,8 @@ RUN usermod -u 1000 www-data
 RUN usermod -aG staff,users,www-data www-data
 # Reconfigure system time
 RUN  dpkg-reconfigure -f noninteractive tzdata
+
+RUN apt-get install -y screen htop git
 
 # Clear all packages and temp files
 RUN	apt-get clean -yqq \
