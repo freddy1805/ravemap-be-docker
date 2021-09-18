@@ -34,7 +34,6 @@ services:
               volume:
                 nocopy: true
             - './docker/php/scripts:/post-install'
-            - './docker/php/scripts/php.ini:/usr/local/etc/php/conf.d/custom.ini'
     nginx:
         image: nginx:stable-alpine
         environment:
