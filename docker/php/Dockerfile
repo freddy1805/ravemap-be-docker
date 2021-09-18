@@ -90,6 +90,8 @@ COPY conf/php-fpm.ini /etc/php/7.4/fpm/php.ini
 COPY conf/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 COPY conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 
+RUN apt-get install -y screen htop git
+
 # Download and install wkhtmltopdf
 RUN apt-get update && apt-get install xvfb libfontconfig wkhtmltopdf -y \
 	&& rm -rf /var/lib/apt/lists/* \
@@ -107,8 +109,6 @@ RUN usermod -u 1000 www-data
 RUN usermod -aG staff,users,www-data www-data
 # Reconfigure system time
 RUN  dpkg-reconfigure -f noninteractive tzdata
-
-RUN apt-get install -y screen htop git
 
 # Clear all packages and temp files
 RUN	apt-get clean -yqq \
