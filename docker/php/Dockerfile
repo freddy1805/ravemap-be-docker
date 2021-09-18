@@ -90,7 +90,7 @@ COPY conf/php-fpm.ini /etc/php/7.4/fpm/php.ini
 COPY conf/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 COPY conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 
-RUN apt-get install -y screen htop git
+RUN apt-get install -y screen htop
 
 # Download and install wkhtmltopdf
 RUN apt-get update && apt-get install xvfb libfontconfig wkhtmltopdf -y \
@@ -113,11 +113,8 @@ RUN  dpkg-reconfigure -f noninteractive tzdata
 # Clear all packages and temp files
 RUN	apt-get clean -yqq \
 	&& apt-get purge php7.4-dev -yqq \
-	&& apt-get purge git -yqq \
 	&& apt-get purge gcc -yqq \
-	&& apt-get purge make -yqq \
-	&& apt-get purge wget -yqq \
-	&& apt-get purge curl -yqq
+	&& apt-get purge make -yqq
 
 RUN rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /tmp/* \
