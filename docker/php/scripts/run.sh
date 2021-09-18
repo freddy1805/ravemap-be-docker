@@ -29,7 +29,8 @@ else
 fi
 
 cd /var/www/symfony
-echo ">> starting websocket service..."
+echo ">> starting websocket service and async messenger..."
 screen -d -m php bin/console gos:websocket:server
+screen -d -m php bin/console messenger:consume-messages
 
 php-fpm7.4
