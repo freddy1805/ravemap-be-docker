@@ -81,15 +81,8 @@ RUN mkdir /var/lib/browscap \
 
 ## Install composer globally
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer -d=/var/www
-
-# Install prestissimo for parallel composer downloads
-RUN mkdir -p /var/www/.composer && chown -R www-data /var/www/.composer
-USER www-data
-RUN composer global require hirak/prestissimo \
- && rm -rf /var/www/.composer/cache
 USER root
-RUN composer global require hirak/prestissimo \
- && rm -rf /root/.composer/cache
+
 
 # Copy our config files for php7.4 fpm and php7.4 cli
 COPY conf/php.ini /etc/php/7.4/cli/php.ini
